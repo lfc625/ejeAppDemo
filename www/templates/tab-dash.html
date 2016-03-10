@@ -1,0 +1,66 @@
+
+<ion-view view-title="{{title.name}}">
+<ion-nav-bar class="bar-stable">
+      
+      <div class="buttons right-buttons">
+        <button ng-click="toggle()" class="button" style="color:#ffffff">
+          <i class="icon ion-arrow-down-b"></i>
+        </button>
+      </div>
+</ion-nav-bar>
+  <ion-content>
+
+    <div id="topMenu" class="top_menu" ng-show="menuState.show">
+      <ul>
+        <li><a ng-click="goSlide(0)">商品采购单</a></li>
+        <li><a ng-click="goSlide(1)">商品入库单</a></li>
+        <li><a ng-click="goSlide(2)">快递配送单</a></li>
+      </ul>
+    </div>
+    <ion-slide-box show-pager="false">
+      <ion-slide>
+        <div class="box blue" style="height: auto;width: 100%">
+          <div class="list" ng-repeat="good in goods">
+              <div class="item item-thumbnail-left" href="#" style="padding: 0">
+                <label class="checkbox" style="float: left;margin-top:1.5rem;color: red">
+                  <input type="checkbox">
+                </label>
+                <img ng-src={{good.pic}} width="78px" height="90px" style="margin-top: 3px">
+                <span style="font-size:18px;position:absolute;left:9rem;bottom:4rem">{{good.name}}</span>
+                <div style="position:absolute;right:0.5rem;top:1rem;">
+                   编辑
+                </div>
+              </div> 
+          </div>
+          <button class="button button-full" style="background-color: #f87400;color:#fff;">确认采购</button>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box red" style="height: auto;width: 100%">          
+        <div class="list" ng-repeat="good in goods">
+            <a class="item item-thumbnail-left" href="#">
+              <img ng-src={{good.pic}}>
+              <h2 style="margin-bottom: 2rem;margin-top: 0.5rem;font-size: 18px">{{good.name}}</h2>
+              <p>数量：{{good.num}}</p>
+              <div style="color:#f87000;position:absolute;right:0.5rem;top:4.2rem;">
+                 确认收货
+              </div>
+            </a>
+        </div>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box red" style=" font-size: 16px;height: auto;width: 100%">
+          <ion-list>
+              <ion-item ng-repeat="good in goods">
+                <p>单号：{{good.id}}</p>
+                <p>货品：{{good.name}}<span style="margin-left:2rem">数量：{{good.num}}</span></p>
+                <p>地址：{{good.add}}</p>
+                <p>工号：{{good.personId}}<span style="margin-left: 7rem">服务：{{good.person}}</span></p>
+              </ion-item>
+           </ion-list>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

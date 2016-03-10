@@ -1,0 +1,60 @@
+<ion-view view-title="{{title.name}}">
+<ion-nav-bar class="bar-stable">
+      
+      <div class="buttons right-buttons">
+        <button id="toggleBtn" ng-click="toggle()" class="button" style="color:#ffffff">
+          <i class="icon ion-arrow-down-b"></i>
+        </button>
+      </div>
+    </ion-nav-bar>
+<ion-content>
+<div id="topMenu" class="top_menu" ng-show="menuState.show">
+    <ul>
+      <li><a ng-click="goSlide(0)">单一商品销售统计</a></li>
+      <li><a ng-click="goSlide(1)">销售金额时刻列表</a></li>
+      <li><a ng-click="goSlide(2)">销售金额日统计图</a></li>
+    </ul>
+  </div>
+  <ion-slide-box show-pager="false">
+      <ion-slide>
+        <div class="box" style="height: auto;width: 100%">
+          <table id="tab">
+			<tr>
+				<th>名称</th>
+				<th>单价</th>
+				<th>数量</th>
+			</tr>
+			<tr ng-repeat="cash in cashs">
+				<td>{{cash.name}}</td>
+				<td>{{cash.price}}</td>
+				<td>{{cash.num}}</td>
+			</tr>
+		  </table>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box red" style="height:auto;width: 100%">
+          <table id="tab">
+			<tr>
+				<th>名称</th>
+				<th>单价</th>
+				<th>数量</th>
+				<th>时间</th>
+			</tr>
+			<tr ng-repeat="cash in cashs">
+				<td>{{cash.name}}</td>
+				<td>{{cash.price}}</td>
+				<td>{{cash.num}}</td>
+				<td>{{cash.time}}</td>
+			</tr>
+		  </table>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box red" style="height: 500px;width: auto">
+          <h1>这里生成销售情况折线图，柱状图等</h1>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+</ion-content>
+</ion-view>

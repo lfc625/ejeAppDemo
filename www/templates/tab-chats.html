@@ -1,0 +1,63 @@
+<ion-view view-title="{{title.name}}">
+<ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <div class="buttons right-buttons">
+        <button id="toggleBtn" ng-click="toggle()" class="button" style="color:#ffffff">
+          <i class="icon ion-arrow-down-b"></i>
+        </button>
+      </div>
+    </ion-nav-bar>
+  <ion-content>
+  <div id="topMenu" class="top_menu" ng-show="menuState.show">
+    <ul>
+      <li><a ng-click="goSlide(0)">入库信息</a></li>
+      <li><a ng-click="goSlide(1)">库存预警提示</a></li>
+      <li><a ng-click="goSlide(2)">问题件信息</a></li>
+    </ul>
+  </div>
+  <ion-slide-box show-pager="false">
+      <ion-slide>
+        <div class="box blue" style="height: auto;width: 100%">
+            <ion-refresher on-refresh="doRefresh()" pulling-text="正在刷新" refreshing-text="刷新完成" refreshing-icon="ion-loading-c">
+            </ion-refresher>
+            <ion-list>
+              <ion-item ng-repeat="chat in chats">
+               <p style="font-weight: bold">{{chat.name}}</p>
+               <p>备注：{{chat.info}}</p>
+               <div style="position:absolute;right:0.5rem;top:1.8rem;">
+                  X{{chat.num}}
+               </div>
+              </ion-item>
+            </ion-list>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box red" style="height: auto;width: 100%">
+           <ion-list>
+              <ion-item ng-repeat="chat in chats">
+               <p style="font-weight: bold">{{chat.name}}</p>
+               <p>数量：{{chat.num}}</p>
+               <div style="color:#f87000;position:absolute;right:0.5rem;top:1.2rem;">
+                  编辑
+               </div>
+              </ion-item>
+           </ion-list>
+        </div>
+      </ion-slide>
+      <ion-slide>
+        <div class="box red" style="height: auto;width: 100%">
+          <ion-list>
+              <ion-item ng-repeat="chat in chats">
+               <p style="font-weight: bold">{{chat.name}}</p>
+               <p>原因：{{chat.reason}}</p>
+               <div style="background-color:{{chat.color}};width:3rem;height:20px;font-size: 14px;line-height: 20px;color:#fff;text-align: center;padding: 1px;position:absolute;right:1rem;top:1.2rem;">
+                  {{chat.result}}
+               </div>
+              </ion-item>
+           </ion-list>
+        </div>
+      </ion-slide>
+    </ion-slide-box>
+  </ion-content>
+</ion-view>

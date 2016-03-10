@@ -1,0 +1,32 @@
+<ion-view view-title="问题件信息">
+<ion-nav-bar class="bar-stable">
+      <ion-nav-back-button>
+      </ion-nav-back-button>
+      <div class="buttons right-buttons">
+        <button id="toggleBtn" ng-click="toggle()" class="button" style="color:#ffffff">
+          <i class="icon ion-arrow-down-b"></i>
+        </button>
+      </div>
+    </ion-nav-bar>
+  <ion-content>
+  <div id="topMenu" class="top_menu" ng-show="menuState.show">
+    <ul>
+      <li><a>入库信息</a></li>
+      <li><a>库存预警提示</a></li>
+      <li><a>问题件信息</a></li>
+    </ul>
+  </div>
+    <ion-list>
+      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
+        <img ng-src="{{chat.face}}">
+        <h2>{{chat.name}}</h2>
+        <p>{{chat.lastText}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">
+          Delete
+        </ion-option-button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
